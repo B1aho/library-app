@@ -1,3 +1,5 @@
+// Добавить комментари и заново проанализировать логику 
+
 function Book(id, title, author, pages, haveRead) {
     if (!(this instanceof Book))
         return new Book(title, author, pages, haveRead)
@@ -69,6 +71,7 @@ form.addEventListener('addBook', showBookCard)
 
 function showBookCard(e) {
     const book = e.value
+    // Даём карточке такой же айлишник, как и у книги
     const idx = myLibrary[myLibrary.indexOf(book)].id
     const card = document.createElement("div")
     card.className = "book-card"
@@ -86,7 +89,9 @@ function showBookCard(e) {
                     readBtn.innerText = "Not read"
                 }
                 card.append(readBtn)
-            } else {
+            } else if (prop === 'id') 
+                continue
+            else {
                 let el = document.createElement("h2")
                 el.id = prop
                 el.innerText = (prop !== "pages") ? book[prop] : book[prop] + " pages"
@@ -103,12 +108,10 @@ function showBookCard(e) {
 }
 
 function removeCard(e) {
-    libraryList()
     const idx =  e.target.getAttribute('index')
     myLibrary = myLibrary.filter((item) => {
        return item.id.toString() !== idx
     })
     const card = document.querySelector(`#card${idx}`)
     card.remove()
-    libraryList()
 }
