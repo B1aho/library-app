@@ -14,7 +14,9 @@ Book.prototype.bookInfo = function() {
 const myLibrary = [];
 
 function addBookToLibrary(title, author, pages, haveRead) {
-    myLibrary.push(new Book(title, author, pages, haveRead))
+    const book = new Book(title, author, pages, haveRead)
+    myLibrary.push(book)
+    return book
   }
 
 function libraryList() {
@@ -27,6 +29,7 @@ const dialog = document.querySelector("#dialog-book")
 const form = document.querySelector("#book-form")
 const openDialogBtn = document.querySelector(".main-btn")
 const submitBtn = document.querySelector("#submit-btn")
+const booksContainer = document.querySelector("#book-cards")
 
 function openDialog() {
     dialog.showModal()
@@ -52,11 +55,29 @@ function serializeForm() {
 
 function submitHandle() {
     input = serializeForm()
-    addBookToLibrary(input.title, input.author, input.pages, input.haveRead)
+    console.log(input)
+    const book = addBookToLibrary(input.title, input.author, input.pages, input.haveRead)
     form.reset()
     let event = new Event('addBook')
+    event.value = book
     form.dispatchEvent(event)
 }
 
 openDialogBtn.addEventListener('click', openDialog)
 form.addEventListener('submit', submitHandle)
+form.addEventListener('addBook', showBookCard)
+
+function showBookCard(e) {
+    const book = e.value
+    const card = document.createElement("div")
+    card.className = "book-card"
+    booksContainer.append(card)
+    for (prop in book) {
+        if (Object.prototype.hasOwnProperty.call(book, prop)) {
+            let el = document.createElement("h2")
+            el.id = prop
+            el.innerText = book[prop]
+            card.append(el)
+        }
+    }
+}
