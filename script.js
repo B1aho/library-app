@@ -1,6 +1,7 @@
-function Book(title, author, pages, haveRead) {
+function Book(id, title, author, pages, haveRead) {
     if (!(this instanceof Book))
         return new Book(title, author, pages, haveRead)
+    this.id = id
     this.title = title
     this.author = author
     this.pages = pages
@@ -8,13 +9,13 @@ function Book(title, author, pages, haveRead) {
 }
 
 Book.prototype.bookInfo = function () {
-    return "'" + this.title + "'" + ", " + this.author + ", " + this.pages + " pages" + ", " + ((this.haveRead) ? "was read" : "not read");
+    return "ID: " + this.id + " " +  "'" + this.title + "'" + ", " + this.author + ", " + this.pages + " pages" + ", " + ((this.haveRead) ? "was read" : "not read");
 }
 
-const myLibrary = [];
+let myLibrary = [];
 
-function addBookToLibrary(title, author, pages, haveRead) {
-    const book = new Book(title, author, pages, haveRead)
+function addBookToLibrary(id, title, author, pages, haveRead) {
+    const book = new Book(id, title, author, pages, haveRead)
     myLibrary.push(book)
     return book
 }
@@ -55,8 +56,7 @@ function serializeForm() {
 
 function submitHandle() {
     input = serializeForm()
-    console.log(input)
-    const book = addBookToLibrary(input.title, input.author, input.pages, input.haveRead)
+    const book = addBookToLibrary(Date.now(), input.title, input.author, input.pages, input.haveRead)
     form.reset()
     let event = new Event('addBook')
     event.value = book
@@ -69,16 +69,16 @@ form.addEventListener('addBook', showBookCard)
 
 function showBookCard(e) {
     const book = e.value
-    const idx = myLibrary.indexOf(book)
+    const idx = myLibrary[myLibrary.indexOf(book)].id
     const card = document.createElement("div")
     card.className = "book-card"
+    card.setAttribute('id', `card${idx}`)
     booksContainer.append(card)
     for (prop in book) {
         if (Object.prototype.hasOwnProperty.call(book, prop)) {
             if (prop === 'haveRead') {
                 let readBtn = document.createElement("button")
-                readBtn.className = "read-btn"
-                readBtn.id = "read-" + idx
+                readBtn.className = "read"
                 if (book[prop]) {
                     readBtn.className = "have-read"
                     readBtn.innerText = "Read"
@@ -95,8 +95,20 @@ function showBookCard(e) {
         }
     }
     const removeBtn = document.createElement("button")
-    removeBtn.className = "remove-btn"
-    removeBtn.id = "remove-" + idx
+    removeBtn.className = "remove"
+    removeBtn.setAttribute('index', +idx)
+    removeBtn.addEventListener('click', removeCard)
     removeBtn.innerText = "Remove"
     card.append(removeBtn)
+}
+
+function removeCard(e) {
+    libraryList()
+    const idx =  e.target.getAttribute('index')
+    myLibrary = myLibrary.filter((item) => {
+       return item.id.toString() !== idx
+    })
+    const card = document.querySelector(`#card${idx}`)
+    card.remove()
+    libraryList()
 }
