@@ -16,10 +16,7 @@
             <label>Название книги <input type="text" name="title" autofocus required></label>
             <label>Автор книги <input type="text" name="author" required></label>
             <label>Укажите кол-во страниц <input type="number" name="pages" min="0" max="100000" required></label>
-            <div class="radio-group">
-                <label>Прочёл книгу<input type="radio" id="yes" name="haveRead" value="yes" checked></label>
-                <label>Пока не прочёл<input type="radio" id="no" name="haveRead" value="no"></label>
-            </div>
+            <label>Прочёл книгу<input type="checkbox" id="check" name="haveRead"></label>
             <button id="submit-btn" type="submit">Submit</button>
         </form>
     </dialog>

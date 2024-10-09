@@ -47,7 +47,7 @@ function serializeForm() {
                 return true
     }).map((item) => {
         const { name, type } = item
-        const value = type === 'radio' && item.value === 'yes' ? true : type === 'radio' ? false : item.value
+        const value = type === 'checkbox' && item.checked ? true : type === 'checkbox' ? false : item.value
         return { name, value }
     }).reduce((obj, curr) => {
         obj[curr.name] = curr.value
@@ -71,7 +71,7 @@ form.addEventListener('addBook', showBookCard)
 
 function showBookCard(e) {
     const book = e.value
-    // Даём карточке такой же айлишник, как и у книги
+    // Даём карточке такой же айдишник, как и у книги
     const idx = myLibrary[myLibrary.indexOf(book)].id
     const card = document.createElement("div")
     card.className = "book-card"
