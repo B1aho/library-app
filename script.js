@@ -1,14 +1,14 @@
-function Book (title, author, pages, haveRead) {
+function Book(title, author, pages, haveRead) {
     if (!(this instanceof Book))
-        return new Book(title, author, pages, haveRead) 
+        return new Book(title, author, pages, haveRead)
     this.title = title
     this.author = author
     this.pages = pages
     this.haveRead = haveRead
 }
 
-Book.prototype.bookInfo = function() {
-    return  "'" + this.title + "'" + ", " +  this.author + ", " + this.pages + " pages" + ", " + ((this.haveRead) ? "was read" : "not read");
+Book.prototype.bookInfo = function () {
+    return "'" + this.title + "'" + ", " + this.author + ", " + this.pages + " pages" + ", " + ((this.haveRead) ? "was read" : "not read");
 }
 
 const myLibrary = [];
@@ -17,7 +17,7 @@ function addBookToLibrary(title, author, pages, haveRead) {
     const book = new Book(title, author, pages, haveRead)
     myLibrary.push(book)
     return book
-  }
+}
 
 function libraryList() {
     myLibrary.forEach((book, idx) => {
@@ -36,16 +36,16 @@ function openDialog() {
 }
 
 function serializeForm() {
-    return Array.from(form.elements).filter((item) =>{ 
+    return Array.from(form.elements).filter((item) => {
         if (!!item.name)
-            if  (item.type === 'radio' && !item.checked)
+            if (item.type === 'radio' && !item.checked)
                 return false
             else
                 return true
     }).map((item) => {
-        const {name, type} = item
+        const { name, type } = item
         const value = type === 'radio' && item.value === 'yes' ? true : type === 'radio' ? false : item.value
-        return {name, value}
+        return { name, value }
     }).reduce((obj, curr) => {
         obj[curr.name] = curr.value
         return obj
@@ -69,15 +69,34 @@ form.addEventListener('addBook', showBookCard)
 
 function showBookCard(e) {
     const book = e.value
+    const idx = myLibrary.indexOf(book)
     const card = document.createElement("div")
     card.className = "book-card"
     booksContainer.append(card)
     for (prop in book) {
         if (Object.prototype.hasOwnProperty.call(book, prop)) {
-            let el = document.createElement("h2")
-            el.id = prop
-            el.innerText = book[prop]
-            card.append(el)
+            if (prop === 'haveRead') {
+                let readBtn = document.createElement("button")
+                readBtn.className = "read-btn"
+                readBtn.id = "read-" + idx
+                if (book[prop]) {
+                    readBtn.className = "have-read"
+                    readBtn.innerText = "Read"
+                } else {
+                    readBtn.innerText = "Not read"
+                }
+                card.append(readBtn)
+            } else {
+                let el = document.createElement("h2")
+                el.id = prop
+                el.innerText = (prop !== "pages") ? book[prop] : book[prop] + " pages"
+                card.append(el)
+            }
         }
     }
+    const removeBtn = document.createElement("button")
+    removeBtn.className = "remove-btn"
+    removeBtn.id = "remove-" + idx
+    removeBtn.innerText = "Remove"
+    card.append(removeBtn)
 }
