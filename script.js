@@ -54,6 +54,8 @@ function submitHandle() {
     input = serializeForm()
     addBookToLibrary(input.title, input.author, input.pages, input.haveRead)
     form.reset()
+    let event = new Event('addBook')
+    form.dispatchEvent(event)
 }
 
 openDialogBtn.addEventListener('click', openDialog)
