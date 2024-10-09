@@ -1,5 +1,6 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="en" class="listen">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,21 @@
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <div>
-    </div>  
-</body>  
+    <button class="main-btn">New Book!</button>
+    <dialog id="dialog-book">
+        <form id="book-form" method="dialog">
+            <label>Название книги <input type="text" name="title" autofocus required></label>
+            <label>Автор книги <input type="text" name="author" required></label>
+            <label>Укажите кол-во страниц <input type="number" name="pages" min="0" max="100000" required></label>
+            <div class="radio-group">
+                <label>Прочёл книгу<input type="radio" id="yes" name="have-read" value="yes" checked></label>
+                <label>Пока не прочёл<input type="radio" id="no" name="have-read" value="no"></label>
+            </div>
+            <button id="submit-btn" type="submit">Submit</button>
+        </form>
+    </dialog>
+</body>
+
 </html>

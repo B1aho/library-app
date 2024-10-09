@@ -13,13 +13,7 @@ Book.prototype.bookInfo = function() {
 
 const myLibrary = [];
 
-function addBookToLibrary() {
-    // do stuff here
-    const title = prompt("Enter title of a Book", "No title entered")
-    const author = prompt("Enter author of a Book", "No author entered")
-    const pages = prompt("Enter number of pages", "0 pages enterd")
-    let answer = prompt("Have you read this book? Answer yes or no.", "Yes").toLowerCase()
-    const haveRead = (answer.charAt(0) === 'y') ? true : false
+function addBookToLibrary(title, author, pages, haveRead) {
     myLibrary.push(new Book(title, author, pages, haveRead))
   }
 
@@ -28,3 +22,39 @@ function libraryList() {
         console.log(idx + ') ' + book.bookInfo() + '\n')
     })
 }
+
+const dialog = document.querySelector("#dialog-book")
+const form = document.querySelector("#book-form")
+const openDialogBtn = document.querySelector(".main-btn")
+const submitBtn = document.querySelector("#submit-btn")
+
+function openDialog() {
+    dialog.showModal()
+}
+
+function serializeForm() {
+    return Array.from(form.elements).filter((item) =>{ 
+        if (!!item.name)
+            if  (item.type === 'radio' && !item.checked)
+                return false
+            else
+                return true
+    }).map((item) => {
+        const {name, type} = item
+        const value = type === 'radio' && item.value === 'yes' ? true : type === 'radio' ? false : item.value
+        return {name, value}
+    }).reduce((obj, curr) => {
+        obj[curr.name] = curr.value
+        return obj
+    }, {})
+}
+
+
+function submitHandle() {
+    input = serializeForm()
+    addBookToLibrary(input.title, input.author, input.pages, input.haveRead)
+    form.reset()
+}
+
+openDialogBtn.addEventListener('click', openDialog)
+form.addEventListener('submit', submitHandle)
