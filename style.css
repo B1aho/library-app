@@ -1,6 +1,4 @@
 body {
-    display: flex;
-    flex-direction: column;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -14,21 +12,18 @@ footer, header {
 
 .content {
     min-height: 100vh;
-    display: flex;
     padding: 4% 20% 0;
-    flex-direction: column;
 }
 
 footer {
-    flex: 0.5 1 0;
     width: 100%;
     height: 7%;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 
 header {
-    flex: 1 1 0;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 5%;
@@ -38,9 +33,6 @@ header > * {
     flex: 1 1 25%;
 }
 
-main {
-    flex: 4;
-}
 
 #book-cards { 
     display: grid;
@@ -60,14 +52,10 @@ main {
 
 .book-card > * {
     margin: 0;
-}
-
-.book-card > h2 {
-    flex: 1 1 0;
+    flex: 1;
 }
 
 .book-card > button {
-    flex: 1 1 0;
     width: 80%;
 }
 
