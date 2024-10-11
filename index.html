@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -13,11 +13,11 @@
     <button class="main-btn">New Book!</button>
     <dialog id="dialog-book">
         <form id="book-form" method="dialog">
-            <label>Название книги <input type="text" name="title" autofocus required></label>
-            <label>Автор книги <input type="text" name="author" required></label>
-            <label>Укажите кол-во страниц <input type="number" name="pages" min="0" max="100000" required></label>
-            <label>Прочёл книгу<input type="checkbox" id="check" name="haveRead"></label>
-            <button id="submit-btn" type="submit">Submit</button>
+            <label>Book's title:<input type="text" name="title" autofocus required></label>
+            <label>Author of book:<input type="text" name="author" required></label>
+            <label>Number of pages:<input type="number" name="pages" min="0" max="100000" required></label>
+            <label>Did you read the book?<input type="checkbox" id="check" name="haveRead"></label>
+            <button id="submit-btn" type="submit">Send!</button>
         </form>
     </dialog>
     <div id="book-cards">
