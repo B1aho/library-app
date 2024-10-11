@@ -35,7 +35,6 @@ function openDialog() {
 }
 
 function closeDialog(e) {
-    console.log(e.target)
     if (e.target.id === 'dialog-book')
         dialog.close()
 }
@@ -78,7 +77,7 @@ function showBookCard(e) {
     const card = document.createElement("div")
     const id = myLibrary[myLibrary.indexOf(book)].id
     card.className = "book-card"
-    card.setAttribute('id', `card${id}`)
+    card.id = `card${id}`
     booksContainer.append(card)
     for (let prop in book) {
         // Iterate only through book's own properties
@@ -86,6 +85,7 @@ function showBookCard(e) {
             // Add 'Read' btn depends on haveRead value
             if (prop === 'haveRead') {
                 const readBtn = document.createElement("button")
+                readBtn.id = `read${id}`
                 readBtn.addEventListener("click", changeReadStatus)
                 readBtn.className = "read"
                 if (book[prop]) {
@@ -108,14 +108,14 @@ function showBookCard(e) {
     // Add remove btn on card's display
     const removeBtn = document.createElement("button")
     removeBtn.className = "remove"
-    removeBtn.id = +id
+    removeBtn.id = `remove${id}`
     removeBtn.addEventListener('click', removeCard)
     removeBtn.innerText = "Remove"
     card.append(removeBtn)
 }
 
 function removeCard(e) {
-    const id = e.target.id
+    const id = extractId(e.target.id)
     myLibrary = myLibrary.filter((item) => {
        return item.id.toString() !== id
     })
@@ -125,6 +125,20 @@ function removeCard(e) {
 
 function changeReadStatus(e) {
     const btn = e.target
+    const id = extractId(btn.id)
     btn.classList.toggle("have-read")
+    const book = myLibrary.find((b) => {
+        return b.id === +id
+    })
+    if (book) {
+        book.haveRead = btn.className.includes("have-read") ? true : false
+    }
     btn.innerText = btn.className.includes("have-read") ? "Read" : "Not read"
+}
+
+// Extract number part of id
+function extractId(str) {
+    const reg = /\d+/g
+    const matches = str.match(reg)
+    return matches[0]
 }
