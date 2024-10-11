@@ -121,5 +121,5 @@ function removeCard(e) {
 function changeReadStatus(e) {
     const btn = e.target
     btn.classList.toggle("have-read")
-    btn.innerText = btn.className === "have-read" ? "Read" : "Not read"
+    btn.innerText = btn.className.includes("have-read") ? "Read" : "Not read"
 }
