@@ -7,58 +7,14 @@ body {
     min-height: 100vh;
 }
 
-header, main, footer {
+footer, header {
     display: flex;
-
 }
 
-header {
-    flex: 1 1 0;
-    justify-content: center;
-}
-
-main {
-    display: flex;
+.content {
+    flex: 10 1 0;
+    padding: 5% 20%;
     flex-direction: column;
-    flex: 6 1 0;
-}
-
-.main-btn {
-    flex: 1 1 0;
-    width: 50%;
-    margin: 0 auto;
-}
-
-#book-cards { 
-    display: flex;
-    flex: 12 1 0;
-    flex-wrap: wrap;
-    max-width: 100%;
-}
-
-#book-cards > * {
-    flex: 1 1 29%;
-    max-width: 29%;
-    max-height: 80%;
-    display: flex;
-    gap: 3%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 2%;
-}
-
-.book-card > * {
-    margin: 0;
-}
-
-.book-card > h2 {
-    flex: 2 1 0;
-}
-
-.book-card > button {
-    flex: 1 1 0;
-    width: 80%;
 }
 
 footer {
@@ -67,6 +23,46 @@ footer {
     height: 7%;
     justify-content: center;
     align-items: center;
+}
+
+header {
+    flex: 1 1 0;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5%;
+}
+
+main {
+    flex: 4;
+}
+
+#book-cards { 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5%;
+}
+
+#book-cards > * {
+    display: flex;
+    gap: 3%;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+}
+
+.book-card > * {
+    margin: 0;
+}
+
+.book-card > h2 {
+    flex: 1 1 0;
+}
+
+.book-card > button {
+    flex: 1 1 0;
+    width: 80%;
 }
 
 #dialog-book {

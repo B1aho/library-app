@@ -10,25 +10,26 @@
 </head>
 
 <body>
-    <header>
-        <h1>Your personal library ^_^</h1>
-    </header>
-    <main>
-        <button class="main-btn">New Book!</button>
-        <dialog id="dialog-book">
-            <div id="dialog-div">
-                <form id="book-form" method="dialog">
-                    <label>Book's title:<input type="text" name="title" autofocus required></label>
-                    <label>Author of book:<input type="text" name="author" required></label>
-                    <label>Number of pages:<input type="number" name="pages" min="0" max="100000" required></label>
-                    <label>Did you read the book?<input type="checkbox" id="check" name="haveRead"></label>
-                    <button id="submit-btn" type="submit">Send!</button>
-                </form>
-            </div>
-        </dialog>
-        <div id="book-cards">
-        </div>
-    </main>
+    <div class="content">
+        <header>
+            <h1>Your personal library ^_^</h1>
+            <button class="main-btn">New Book!</button>
+        </header>
+        <main>
+            <dialog id="dialog-book">
+                <div id="dialog-div">
+                    <form id="book-form" method="dialog">
+                        <label>Book's title:<input type="text" name="title" autofocus required></label>
+                        <label>Author of book:<input type="text" name="author" required></label>
+                        <label>Number of pages:<input type="number" name="pages" min="0" max="100000" required></label>
+                        <label>Did you read the book?<input type="checkbox" id="check" name="haveRead"></label>
+                        <button id="submit-btn" type="submit">Send!</button>
+                    </form>
+                </div>
+            </dialog>
+            <div id="book-cards"></div>
+        </main>
+    </div>
     <footer>
         Copyright © Viktor Kolesnik <a href="https://github.com/B1aho">link</a>
     </footer>
