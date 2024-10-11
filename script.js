@@ -100,7 +100,7 @@ function showBookCard(e) {
             else {
                 let el = document.createElement("h2")
                 el.id = prop
-                el.innerText = (prop !== "pages") ? book[prop] : book[prop] + " pages"
+                el.innerText = (prop === "pages") ? book[prop] + " pages" : (prop === "title") ? '"' + book[prop] + '"' : book[prop]
                 card.append(el)
             }
         }
