@@ -5,7 +5,7 @@ body {
     margin: 0;
     box-sizing: border-box;
     min-height: 100vh;
-    font-family: : Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 footer, header {
@@ -45,7 +45,7 @@ main {
 #book-cards { 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5%;
+    grid-gap: 10px;
 }
 
 #book-cards > * {
