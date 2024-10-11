@@ -1,3 +1,17 @@
-.pink {
-    background-color: plum;
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header, main, footer {
+    display: flex;
+}
+
+#dialog-book {
+    padding: 0;
+}
+
+#dialog-div {
+    padding: 16px;
 }

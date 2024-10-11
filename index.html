@@ -16,18 +16,22 @@
     <main>
         <button class="main-btn">New Book!</button>
         <dialog id="dialog-book">
-            <form id="book-form" method="dialog">
-                <label>Book's title:<input type="text" name="title" autofocus required></label>
-                <label>Author of book:<input type="text" name="author" required></label>
-                <label>Number of pages:<input type="number" name="pages" min="0" max="100000" required></label>
-                <label>Did you read the book?<input type="checkbox" id="check" name="haveRead"></label>
-                <button id="submit-btn" type="submit">Send!</button>
-            </form>
+            <div id="dialog-div">
+                <form id="book-form" method="dialog">
+                    <label>Book's title:<input type="text" name="title" autofocus required></label>
+                    <label>Author of book:<input type="text" name="author" required></label>
+                    <label>Number of pages:<input type="number" name="pages" min="0" max="100000" required></label>
+                    <label>Did you read the book?<input type="checkbox" id="check" name="haveRead"></label>
+                    <button id="submit-btn" type="submit">Send!</button>
+                </form>
+            </div>
         </dialog>
         <div id="book-cards">
         </div>
     </main>
-    <footer>Copyright © Viktor Kolesnik<a>https://github.com/B1aho</a></footer>
+    <footer>
+        Copyright © Viktor Kolesnik <a href="https://github.com/B1aho">link</a>
+    </footer>
 </body>
 
 </html>

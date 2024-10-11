@@ -27,13 +27,18 @@ const openDialogBtn = document.querySelector(".main-btn")
 const booksContainer = document.querySelector("#book-cards")
 
 
-// on button click show dialog popup
+// On button click show dialog popup. On button click outside dialog-div dialog will be closed
 openDialogBtn.addEventListener('click', openDialog)
-
+dialog.addEventListener('click', closeDialog)
 function openDialog() {
     dialog.showModal()
 }
 
+function closeDialog(e) {
+    console.log(e.target)
+    if (e.target.id === 'dialog-book')
+        dialog.close()
+}
 /* 
 When form is submit, serialize data from form into one object, give id to it and add to library and emit event when done
 */
