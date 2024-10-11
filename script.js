@@ -1,4 +1,4 @@
-// Добавить комментари и заново проанализировать логику 
+let myLibrary = [];
 
 function Book(id, title, author, pages, haveRead) {
     if (!(this instanceof Book))
@@ -14,8 +14,6 @@ Book.prototype.bookInfo = function () {
     return "ID: " + this.id + " " +  "'" + this.title + "'" + ", " + this.author + ", " + this.pages + " pages" + ", " + ((this.haveRead) ? "was read" : "not read");
 }
 
-let myLibrary = [];
-
 function addBookToLibrary(id, title, author, pages, haveRead) {
     const book = new Book(id, title, author, pages, haveRead)
     myLibrary.push(book)
@@ -28,10 +26,10 @@ function libraryList() {
     })
 }
 
+// html-elements
 const dialog = document.querySelector("#dialog-book")
 const form = document.querySelector("#book-form")
 const openDialogBtn = document.querySelector(".main-btn")
-const submitBtn = document.querySelector("#submit-btn")
 const booksContainer = document.querySelector("#book-cards")
 
 function openDialog() {
@@ -80,7 +78,9 @@ function showBookCard(e) {
     for (prop in book) {
         if (Object.prototype.hasOwnProperty.call(book, prop)) {
             if (prop === 'haveRead') {
-                let readBtn = document.createElement("button")
+                // Add read btn
+                const readBtn = document.createElement("button")
+                readBtn.addEventListener("click", changeReadStatus)
                 readBtn.className = "read"
                 if (book[prop]) {
                     readBtn.className = "have-read"
@@ -99,6 +99,7 @@ function showBookCard(e) {
             }
         }
     }
+    // Add remove btn on card display
     const removeBtn = document.createElement("button")
     removeBtn.className = "remove"
     removeBtn.setAttribute('index', +idx)
@@ -114,4 +115,10 @@ function removeCard(e) {
     })
     const card = document.querySelector(`#card${idx}`)
     card.remove()
+}
+
+function changeReadStatus(e) {
+    const btn = e.target
+    btn.classList.toggle("have-read")
+    btn.innerText = btn.className === "have-read" ? "Read" : "Not read"
 }
