@@ -25,7 +25,7 @@ const dialog = document.querySelector("#dialog-book")
 const form = document.querySelector("#book-form")
 const openDialogBtn = document.querySelector(".main-btn")
 const booksContainer = document.querySelector("#book-cards")
-
+const imgContainer = document.querySelector("#no-cards")
 
 // On button click show dialog popup. On button click outside dialog-div dialog will be closed
 openDialogBtn.addEventListener('click', openDialog)
@@ -66,6 +66,8 @@ function submitHandle() {
     let event = new Event('addBook')
     event.value = book
     form.dispatchEvent(event)
+    // Make starting-image visible only if no book cards was added
+    imgContainer.style.display = 'none'
 }
 
 // When book was add to library, show card of recently added book
