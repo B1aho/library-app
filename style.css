@@ -35,7 +35,7 @@ footer {
     height: 3rem;
     justify-content: center;
     align-items: center;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 header {
@@ -84,19 +84,30 @@ img {
 #book-cards { 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
+    grid-gap: 40px;
 }
 
-#book-cards > * {
+.book-card {
     display: flex;
     gap: 3%;
     height: 250px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5% 2%;
-    border-radius: 15px;
+    padding: 5% 5%;
+    border-radius: 2% 2% 2% 2% / 2% 2% 2% 2% ;
+    box-shadow: 18px 18px rgba(0,0,0,.15);
+    transition: all .4s ease;
     background-color: rgba(242, 136, 208, 0.838);
+}
+
+.book-card h2 {
+    font-size: 1.2rem;
+}
+
+.book-card:hover {
+    border-radius: 10% 10% 10% 10% / 8% 8% 8% 8% ;
+    box-shadow: 10px 10px rgba(0,0,0,.25);
 }
 
 .book-card > * {
@@ -130,6 +141,7 @@ button.remove:hover {
     background-color: rgb(250, 215, 239);
     border-radius: 15px;
     height: 55%;
+    border: 1px solid rgba(84, 64, 75, 0.555);
 }
 
 #dialog-div {
@@ -148,29 +160,60 @@ button.remove:hover {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     height: 34vh;
 }
 
 input {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    background-color: rgba(255, 205, 254, 0.769);
+    border-radius: 7px;
+    border: 1px solid rgba(79, 64, 72, 0.555)
+}
+
+#pages-input {
+    width: 35%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+#pages-input::-webkit-outer-spin-button,
+#pages-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input:focus {
+    outline: 2px solid rgba(255, 142, 202, 0.715);
+}
+#check:focus {
     outline: none;
 }
 
 #check {
     transform: scale(1.4);
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 12%;
+    margin-left: 0;
     accent-color: rgb(255, 0, 136);
 }
 
 #submit-btn {
     height: 10%;
     font-size: 1rem;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right, #fec6ed 0%, #F15F79 51%, #fec6ed 100%);
+    background-size: 200% auto;
+    transition: all 0.3s ease-in-out;
+}
+
+#submit-btn:hover {
+    background-position: right center;
+    transform: translateY(-0.25em);
+    box-shadow: 0 10px 9px -3px #6f061961;
+}
+
+#submit-btn:active {
+    transform: translateY(0);
+    box-shadow: unset;
 }
 
 dialog::backdrop {
