@@ -33,10 +33,15 @@ header > * {
 }
 
 img {
-    width: 30%;
-    height: 30%;
+    width: 65%;
 }
 
+#no-cards {
+    position: relative;
+    bottom: 30px;
+    left: 20px;
+    text-align: center;
+}
 
 #book-cards { 
     display: grid;
