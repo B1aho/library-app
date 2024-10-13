@@ -3,7 +3,7 @@ body {
     margin: 0;
     box-sizing: border-box;
     min-height: 100vh;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: "Fjalla One", 'Times New Roman', Times, serif;
 }
 
 footer, header {
@@ -46,7 +46,7 @@ img {
 #book-cards { 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 30px;
 }
 
 #book-cards > * {
@@ -56,7 +56,9 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2%;
+    padding: 5% 2%;
+    border-radius: 10px;
+    background-color: rgba(165, 139, 139, 0.5);
 }
 
 .book-card > * {
