@@ -123,6 +123,9 @@ function removeCard(e) {
     })
     const card = document.querySelector(`#card${id}`)
     card.remove()
+    if (myLibrary.length === 0) {
+        imgContainer.style.display = 'block'
+    }
 }
 
 function changeReadStatus(e) {
