@@ -66,7 +66,7 @@ function submitHandle() {
     let event = new Event('addBook')
     event.value = book
     form.dispatchEvent(event)
-    // Make starting-image visible only if no book cards was added
+    // Hide image when adding start
     imgContainer.style.display = 'none'
 }
 
