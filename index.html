@@ -22,10 +22,12 @@
             <dialog id="dialog-book">
                 <div id="dialog-div">
                     <form id="book-form" method="dialog">
-                        <label>Book's title:<input type="text" name="title" autofocus required></label>
-                        <label>Author of book:<input type="text" name="author" required></label>
-                        <label>Number of pages:<input type="number" name="pages" min="0" max="100000" required></label>
-                        <label>Did you read the book?<input type="checkbox" id="check" name="haveRead"></label>
+                        <div id="inputs">
+                            <label for="title">Book's title:</label><input type="text" name="title" autofocus required>
+                            <label for="author">Author of book:</label><input type="text" name="author" required>
+                            <label for="pages"></label>Number of pages:<input type="number" name="pages" min="0" max="100000" required>
+                            <label for="haveRead"></label>Did you read the book?<input type="checkbox" id="check" name="haveRead">
+                        </div>
                         <button id="submit-btn" type="submit">Send!</button>
                     </form>
                 </div>
