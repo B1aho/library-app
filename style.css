@@ -9,6 +9,14 @@ body {
 
 button {
     font-family: "Fjalla One", 'Times New Roman', Times, serif;
+    border-radius: 8px;
+    border: none;
+    height: 9vh;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
 }
 
 .content {
@@ -27,17 +35,24 @@ footer {
     height: 3rem;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
 }
 
 header {
     justify-content: space-around;
     align-items: center;
-    padding-bottom: 5%;
+    padding-bottom: 4%;
 }
 
 header button {
     flex: 0 1 30%;
     font-size: 1.7rem;
+    background-color: rgba(240, 255, 255, 0);
+    transition: background-color 0.3s ease-in-out;
+}
+
+header button:hover {
+    background-color: rgba(240, 248, 255, 0.642);
 }
 
 header h1 {
@@ -80,8 +95,8 @@ img {
     justify-content: center;
     align-items: center;
     padding: 5% 2%;
-    border-radius: 10px;
-    background-color: rgba(165, 139, 139, 0.5);
+    border-radius: 15px;
+    background-color: rgba(242, 136, 208, 0.838);
 }
 
 .book-card > * {
@@ -91,16 +106,35 @@ img {
 
 .book-card > button {
     width: 80%;
+    font-size: 1.2rem;
+    background-color: rgba(243, 255, 107, 0.79);
+}
+
+button.have-read {
+    background-color: rgba(143, 255, 147, 0.79);
+}
+
+button.remove {
+    color: crimson;
+    background-color: rgba(240, 248, 255, 0);
+    transition: background-color 0.3s ease-in-out;
+}
+
+button.remove:hover {
+    background-color: rgba(240, 248, 255, 0.651);
 }
 
 #dialog-book {
     padding: 0;
-    width: 30%;
+    width: 26%;
+    background-color: rgb(250, 215, 239);
+    border-radius: 15px;
+    height: 55%;
 }
 
 #dialog-div {
-    padding: 5% 10%;
-    height: 88%;
+    padding: 4% 8%;
+    height: 92%;
 }
 
 #book-form { 
@@ -115,20 +149,30 @@ img {
     flex-direction: column;
     gap: 4px;
     font-size: 1.4rem;
+    height: 34vh;
 }
 
 input {
-    height: 1.3rem;
+    font-size: 1.2rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+#check {
+    transform: scale(1.4);
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    accent-color: rgb(255, 0, 136);
 }
 
 #submit-btn {
-    border-radius: 7px;
-    border: none;
     height: 10%;
     font-size: 1rem;
 }
 
-dialog { 
-    border-radius: 15px;
-    height: 54%;
+dialog::backdrop {
+    backdrop-filter: blur(3px);
 }
