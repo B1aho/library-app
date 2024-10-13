@@ -98,11 +98,12 @@ img {
     border-radius: 2% 2% 2% 2% / 2% 2% 2% 2% ;
     box-shadow: 18px 18px rgba(0,0,0,.15);
     transition: all .4s ease;
-    background-color: rgba(242, 136, 208, 0.838);
+    background-color: rgba(255, 126, 233, 0.838);
 }
 
 .book-card h2 {
     font-size: 1.2rem;
+    color: #ffffff;
 }
 
 .book-card:hover {
@@ -140,13 +141,26 @@ button.remove:hover {
     width: 26%;
     background-color: rgb(250, 215, 239);
     border-radius: 15px;
-    height: 55%;
+    height: 62%;
     border: 1px solid rgba(84, 64, 75, 0.555);
 }
 
+#dialog-book[open] {
+    animation: scale 0.5s ease-in-out;
+  }
+  
+  @keyframes scale{
+    0%{
+      transform:  scale(0);
+    }
+    100%{
+        transform:  scale(1);
+    }
+  }
+
 #dialog-div {
-    padding: 4% 8%;
-    height: 92%;
+    padding: 6% 8%;
+    height: 89%;
 }
 
 #book-form { 
@@ -165,10 +179,11 @@ button.remove:hover {
 }
 
 input {
-    font-size: 1.5rem;
-    background-color: rgba(255, 205, 254, 0.769);
+    padding: 3% 3%;
+    font-size: 1.3rem;
+    background-color: #ffebf7;
     border-radius: 7px;
-    border: 1px solid rgba(79, 64, 72, 0.555)
+    border: none;
 }
 
 #pages-input {
@@ -183,7 +198,7 @@ input {
 }
 
 input:focus {
-    outline: 2px solid rgba(255, 142, 202, 0.715);
+    outline: 3px solid rgba(255, 255, 255, 0.779);
 }
 #check:focus {
     outline: none;
@@ -193,14 +208,14 @@ input:focus {
     transform: scale(1.4);
     width: 12%;
     margin-left: 0;
-    accent-color: rgb(255, 0, 136);
+    accent-color: rgb(255, 118, 134);
 }
 
 #submit-btn {
-    height: 10%;
+    height: 15%;
     font-size: 1rem;
     text-transform: uppercase;
-    background-image: linear-gradient(to right, #fec6ed 0%, #F15F79 51%, #fec6ed 100%);
+    background-image: linear-gradient(to right, #fec6ed 0%, #fe6a99 51%, #fec6ed 100%);
     background-size: 200% auto;
     transition: all 0.3s ease-in-out;
 }
