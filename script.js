@@ -1,17 +1,16 @@
 let myLibrary = [];
 
-function Book(id, title, author, pages, haveRead) {
-    if (!(this instanceof Book))
-        return new Book(title, author, pages, haveRead)
-    this.id = id
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.haveRead = haveRead
-}
-
-Book.prototype.bookInfo = function () {
-    return "ID: " + this.id + " " +  "'" + this.title + "'" + ", " + this.author + ", " + this.pages + " pages" + ", " + ((this.haveRead) ? "was read" : "not read");
+class Book {
+    constructor (id, title, author, pages, haveRead) {
+        this.id = id
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.haveRead = haveRead
+    }
+    bookInfo() {
+        return "ID: " + this.id + " " +  "'" + this.title + "'" + ", " + this.author + ", " + this.pages + " pages" + ", " + ((this.haveRead) ? "was read" : "not read");
+    }
 }
 
 function addBookToLibrary(id, title, author, pages, haveRead) {
@@ -38,9 +37,8 @@ function closeDialog(e) {
     if (e.target.id === 'dialog-book')
         dialog.close()
 }
-/* 
-When form is submit, serialize data from form into one object, give id to it and add to library and emit event when done
-*/
+
+// When form is submit, serialize data from form into one object, give id to it and add to library and emit event when done
 form.addEventListener('submit', submitHandle)
 
 function serializeForm() {
